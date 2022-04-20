@@ -1,5 +1,7 @@
 import csv, glob, os
 
+#TODO somehow recognize int ans string so to not put "" around that value
+
 def read_csv_file(file_name):
     rows = []
     with open(file_name, 'r') as file:
@@ -11,17 +13,16 @@ def read_csv_file(file_name):
 def create_sql_insert_statement(file_name):
     table_name = file_name.split(".")[0]
     rows = read_csv_file(file_name)
-    headers = ",".join(rows[0])
-    insert_line = "INSERT INTO " + table_name + "(" + headers + ")\n"
-    values_line = "VALUES\n"
+    headers = "`,`".join(rows[0])
+    insert_line = "INSERT INTO `" + table_name + "` (`" + headers + "`) VALUES\n"
     entries = []
 
     for row in rows[1:]:
-        value = "\t(" + ",".join(row) + ")"
+        value = "('" + "', '".join(row) + "')," #TODO remove comma from the last line
         entries.append(value)
 
-    entry_lines = ",\n".join(entries)
-    return insert_line + values_line + entry_lines + ";"
+    entry_lines = "\n".join(entries)
+    return insert_line + entry_lines + ";"
 
 def save_data_to_sql_file(csv_file_name):
     output_file_name = csv_file_name.split(".")[0]
