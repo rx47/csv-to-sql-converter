@@ -1,6 +1,7 @@
 import csv, glob, os
 
 #TODO somehow recognize int ans string so to not put "" around that value
+#TODO figureout how to create tables
 
 def read_csv_file(file_name):
     rows = []
