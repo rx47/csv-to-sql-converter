@@ -18,11 +18,13 @@ def create_sql_insert_statement(file_name):
     entries = []
 
     for row in rows[1:]:
-        value = "('" + "', '".join(row) + "')," #TODO remove comma from the last line
+        value = "('" + "', '".join(row) + "'),"
         entries.append(value)
 
     entry_lines = "\n".join(entries)
-    return insert_line + entry_lines + ";"
+    result = insert_line + entry_lines + ";"
+    last_comma = result.replace(",;",";")[0:]
+    return last_comma
 
 def save_data_to_sql_file(csv_file_name):
     output_file_name = csv_file_name.split(".")[0]
