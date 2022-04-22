@@ -1,6 +1,5 @@
 import csv, glob, os
 
-#TODO somehow recognize int and string so to not put "" around that value
 
 def read_csv_file(file_name):
     rows = []
@@ -23,6 +22,7 @@ def create_sql_insert_statement(file_name):
 
     entry_lines = "\n".join(entries)
     result = insert_line + entry_lines + ";"
+
     last_comma = result.replace(",;",";")[0:]
     return last_comma
 
