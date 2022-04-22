@@ -13,5 +13,4 @@ to use it into you project for converting specific files import the following fu
 
 #### v0.2
 * minor bugfixes
-* fixed comma issue on the last line
-* it has been replaced with `;`
+* fixed comma issue on the last line replaced it with `;`
