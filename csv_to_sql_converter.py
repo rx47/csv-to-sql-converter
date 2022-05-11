@@ -13,7 +13,7 @@ def create_sql_insert_statement(file_name):
     table_name = file_name.split(".")[0]
     rows = read_csv_file(file_name)
     headers = "`,`".join(rows[0])
-    insert_line = "INSERT INTO `" + table_name + "` (`" + headers + "`)\nVALUES\n"
+    insert_line = "INSERT INTO `" + table_name + "` (`" + headers + "`) VALUES\n"
     entries = []
 
     for row in rows[1:]:
